@@ -1022,7 +1022,7 @@ function generarPDF() {
           const lineas =
             doc.splitTextToSize(
               textoIngrediente,
-              anchoContenido - 12
+              anchoContenido - 24
             );
 
           const altoFila =
@@ -1128,7 +1128,7 @@ function generarPDF() {
           const lineas =
             doc.splitTextToSize(
               texto,
-              anchoContenido - 17
+              anchoContenido - 30
             );
 
 
