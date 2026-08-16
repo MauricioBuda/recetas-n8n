@@ -11,7 +11,7 @@ import { jsPDF } from "jspdf";
 // la Production URL del Webhook de n8n.
 
 const WEBHOOK_URL =
-  "https://mbuda.app.n8n.cloud/webhook-test/8e9cc553-9255-4f75-b154-4f78deba25f5";
+  "https://mbuda.app.n8n.cloud/webhook/8e9cc553-9255-4f75-b154-4f78deba25f5";
 
 
 // ============================================================
