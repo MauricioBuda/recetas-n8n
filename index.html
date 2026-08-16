@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta
+      name="description"
+      content="Generador de recetas personalizado según tus preferencias."
+    />
+
+    <title>¿Qué comemos?</title>
+  </head>
+
+  <body>
+
+
+      <!-- LOADING -->
+<div id="overlayCarga" class="overlay-carga" hidden>
+  <div class="spinner"></div>
+  <p> Pensando cosas ricas ... </p>
+</div>
+
+
+
+
+    <main class="contenedor">
+      <!-- =====================================================
+           ENCABEZADO
+      ====================================================== -->
+      <header class="encabezado">
+        <h1>¿Qué comemos hoy?</h1>
+
+        <p>
+          ¡Te damos
+          <strong>3 opciones de recetas</strong> para zafar de pensar!
+        </p>
+      </header>
+
+
+      <!-- =====================================================
+           FORMULARIO
+      ====================================================== -->
+      <section class="seccion-formulario">
+        <form id="formularioRecetas">
+
+          <!-- PERSONAS -->
+          <div class="campo">
+            <label for="personas">
+              ¿Para cuántas personas?
+              <span aria-hidden="true">*</span>
+            </label>
+
+            <select id="personas" name="personas" required>
+              <option value="" selected disabled>
+                Seleccioná una opción
+              </option>
+
+              <option value="1">1 persona</option>
+              <option value="2">2 personas</option>
+              <option value="3">3 personas</option>
+              <option value="4">4 personas</option>
+              <option value="5">5 personas</option>
+              <option value="6">6 personas</option>
+            </select>
+          </div>
+
+
+          <!-- CONDICIÓN MÉDICA -->
+          <div class="campo">
+            <label for="condicion">
+              ¿Tenés alguna condición médica que debamos tener en cuenta?
+            </label>
+
+            <input
+              type="text"
+              id="condicion"
+              name="condicion"
+              placeholder="Ej.: celíaco, hipertenso, diabético, etc."
+              autocomplete="off"
+            />
+          </div>
+
+
+          <!-- ALIMENTOS A EVITAR -->
+          <div class="campo">
+            <label for="evitar">
+              ¿Hay algún alimento o ingrediente que quieras evitar?
+            </label>
+
+            <input
+              type="text"
+              id="evitar"
+              name="evitar"
+              placeholder="Ej.: pescado, pollo, lácteos, etc."
+              autocomplete="off"
+            />
+          </div>
+
+
+          <!-- STOCK -->
+          <div class="campo">
+            <label for="stock">
+              ¿Tenés algún ingrediente en stock que quieras aprovechar?
+            </label>
+
+            <input
+              type="text"
+              id="stock"
+              name="stock"
+              placeholder="Ej.: fideos, arroz, cebolla, zuquini, etc."
+              autocomplete="off"
+            />
+          </div>
+
+
+          <!-- USO DEL STOCK -->
+          <div class="campo">
+            <label for="usarStock">
+              ¿Cómo querés que usemos esos ingredientes?
+            </label>
+
+            <select id="usarStock" name="usarStock">
+              <option value="" selected disabled>
+                Seleccioná una opción
+              </option>
+
+              <option value="Incluirlos cuando sea posible">
+                Incluirlos cuando sea posible
+              </option>
+
+              <option value="Utilizarlos siempre que sea compatible">
+                Utilizarlos siempre que sea compatible
+              </option>
+
+              <option value="Limitar las recetas a los ingredientes disponibles">
+                Limitar las recetas a los ingredientes disponibles
+              </option>
+            </select>
+          </div>
+
+
+          <!-- OBSERVACIONES -->
+          <div class="campo">
+            <label for="observaciones">
+              ¿Hay alguna observación o preferencia que debamos tener en cuenta?
+            </label>
+
+            <textarea
+              id="observaciones"
+              name="observaciones"
+              rows="4"
+              placeholder="Ej.: recetas rápidas, que entren en un tupper, que sean económicas, etc."
+            ></textarea>
+          </div>
+
+
+          <!-- BOTÓN -->
+          <button
+            type="submit"
+            id="btnGenerar"
+          >
+            Generar mis recetas
+          </button>
+
+        </form>
+      </section>
+
+
+      <!-- =====================================================
+           ESTADO DE CARGA
+      ====================================================== -->
+      <section
+        id="estadoCarga"
+        class="estado-carga"
+        hidden
+      >
+        <p>
+          Estamos preparando tus 3 opciones...
+        </p>
+      </section>
+
+
+      <!-- =====================================================
+           RESULTADOS
+      ====================================================== -->
+      <section
+        id="resultado"
+        class="resultado"
+        hidden
+      >
+        <div class="resultado-encabezado">
+          <h2>Elegí tu receta</h2>
+
+          <p>
+            Acá tenés 3 opciones diferentes según tus preferencias.
+          </p>
+        </div>
+
+        <div
+          id="listaRecetas"
+          class="lista-recetas"
+        ></div>
+
+
+        <!-- =================================================
+             PDF
+        ================================================== -->
+        <div class="acciones-resultado">
+          <button
+            type="button"
+            id="btnGenerarPDF"
+          >
+            Generar PDF
+          </button>
+        </div>
+      </section>
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+
+
+
+
+
+</html>

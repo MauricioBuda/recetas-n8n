@@ -1,0 +1,592 @@
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  color: #2f2925;
+  background: #f7f3ee;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --color-principal: #8b5e3c;
+  --color-principal-hover: #744c30;
+  --color-fondo: #f7f3ee;
+  --color-tarjeta: #ffffff;
+  --color-texto: #2f2925;
+  --color-texto-secundario: #746b65;
+  --color-borde: #ddd4cc;
+  --color-error: #c0392b;
+  --sombra: 0 12px 30px rgba(44, 34, 27, 0.08);
+
+  --radio-grande: 20px;
+  --radio-mediano: 12px;
+  --transicion: 0.2s ease;
+}
+
+
+/* =========================================================
+   RESET BÁSICO
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 255, 255, 0.9),
+      transparent 45%
+    ),
+    var(--color-fondo);
+
+  color: var(--color-texto);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+========================================================= */
+
+.contenedor {
+  width: min(100% - 32px, 760px);
+  margin: 0 auto;
+  padding: 50px 0 70px;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.encabezado {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.encabezado h1 {
+  margin: 0 0 12px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+
+  color: var(--color-principal);
+}
+
+.encabezado p {
+  max-width: 560px;
+  margin: 0 auto;
+
+  color: var(--color-texto-secundario);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.encabezado strong {
+  color: var(--color-texto);
+}
+
+
+/* =========================================================
+   FORMULARIO
+========================================================= */
+
+.seccion-formulario {
+  background: var(--color-tarjeta);
+  border: 1px solid rgba(139, 94, 60, 0.12);
+  border-radius: var(--radio-grande);
+
+  padding: 32px;
+
+  box-shadow: var(--sombra);
+}
+
+#formularioRecetas {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.campo label span {
+  color: var(--color-error);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-mediano);
+
+  padding: 13px 14px;
+
+  background: #ffffff;
+  color: var(--color-texto);
+
+  outline: none;
+
+  transition:
+    border-color var(--transicion),
+    box-shadow var(--transicion),
+    background-color var(--transicion);
+}
+
+.campo input,
+.campo select {
+  min-height: 48px;
+}
+
+.campo textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+  color: #aaa29c;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: var(--color-principal);
+
+  box-shadow:
+    0 0 0 3px rgba(139, 94, 60, 0.12);
+}
+
+
+/* =========================================================
+   BOTÓN PRINCIPAL
+========================================================= */
+
+#btnGenerar,
+#btnGenerarPDF {
+  border: none;
+  border-radius: var(--radio-mediano);
+
+  min-height: 50px;
+  padding: 13px 20px;
+
+  background: var(--color-principal);
+  color: #ffffff;
+
+  font-weight: 700;
+  cursor: pointer;
+
+  transition:
+    background-color var(--transicion),
+    transform var(--transicion),
+    box-shadow var(--transicion);
+}
+
+#btnGenerar:hover,
+#btnGenerarPDF:hover {
+  background: var(--color-principal-hover);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px rgba(116, 76, 48, 0.18);
+}
+
+#btnGenerar:active,
+#btnGenerarPDF:active {
+  transform: translateY(0);
+}
+
+#btnGenerar:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   ESTADO DE CARGA
+========================================================= */
+
+.estado-carga {
+  margin-top: 28px;
+
+  padding: 22px;
+
+  border-radius: var(--radio-mediano);
+
+  background: rgba(139, 94, 60, 0.07);
+  border: 1px solid rgba(139, 94, 60, 0.14);
+
+  text-align: center;
+}
+
+.estado-carga p {
+  margin: 0;
+
+  color: var(--color-principal);
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   RESULTADOS
+========================================================= */
+
+.resultado {
+  margin-top: 45px;
+}
+
+.resultado-encabezado {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.resultado-encabezado h2 {
+  margin: 0 0 8px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+
+  color: var(--color-principal);
+}
+
+.resultado-encabezado p {
+  margin: 0;
+
+  color: var(--color-texto-secundario);
+}
+
+
+/* =========================================================
+   LISTA DE RECETAS
+========================================================= */
+
+.lista-recetas {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+/* =========================================================
+   TARJETA DE RECETA
+========================================================= */
+
+.tarjeta-receta {
+  background: var(--color-tarjeta);
+
+  border: 1px solid rgba(139, 94, 60, 0.12);
+  border-radius: var(--radio-grande);
+
+  padding: 28px;
+
+  box-shadow: var(--sombra);
+}
+
+.encabezado-receta {
+  margin-bottom: 24px;
+}
+
+.opcion-receta {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: var(--color-principal);
+
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nombre-receta {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  line-height: 1.2;
+}
+
+
+/* =========================================================
+   INFORMACIÓN DE RECETA
+========================================================= */
+
+.info-receta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-top: 14px;
+}
+
+.info-receta span {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 7px 11px;
+
+  border-radius: 999px;
+
+  background: #f3ece6;
+  color: var(--color-principal);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   SECCIONES DE LA RECETA
+========================================================= */
+
+.seccion-receta {
+  margin-top: 26px;
+}
+
+.seccion-receta h3 {
+  margin: 0 0 14px;
+
+  font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   INGREDIENTES
+========================================================= */
+
+.lista-ingredientes {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.lista-ingredientes li {
+  padding: 10px 12px;
+
+  border-radius: 10px;
+
+  background: #faf8f5;
+  border: 1px solid #eee7e0;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   PREPARACIÓN
+========================================================= */
+
+.lista-preparacion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.paso-receta {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.numero-paso {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: var(--color-principal);
+  color: #ffffff;
+
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.contenido-paso {
+  line-height: 1.55;
+}
+
+.tiempo-paso {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--color-texto-secundario);
+
+  font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   ACCIONES DEL RESULTADO
+========================================================= */
+
+.acciones-resultado {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 30px;
+}
+
+#btnGenerarPDF {
+  width: min(100%, 320px);
+}
+
+
+/* =========================================================
+   UTILIDADES
+========================================================= */
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .contenedor {
+    width: min(100% - 20px, 760px);
+    padding: 30px 0 45px;
+  }
+
+  .seccion-formulario {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .tarjeta-receta {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .encabezado {
+    margin-bottom: 26px;
+  }
+
+  .campo label {
+    font-size: 0.92rem;
+  }
+
+  .paso-receta {
+    grid-template-columns: 32px 1fr;
+    gap: 10px;
+  }
+
+  .numero-paso {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+}
+
+
+
+/* =========================================================
+   OVERLAY DE CARGA
+========================================================= */
+
+.overlay-carga {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+
+  background: rgba(247, 243, 238, 0.55);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.overlay-carga p {
+  margin: 0;
+
+  color: var(--color-principal);
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Spinner */
+
+.spinner {
+  width: 52px;
+  height: 52px;
+
+  border: 5px solid rgba(139, 94, 60, 0.18);
+  border-top-color: var(--color-principal);
+
+  border-radius: 50%;
+
+  animation: girarSpinner 0.9s linear infinite;
+}
+
+@keyframes girarSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
