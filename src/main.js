@@ -79,13 +79,19 @@ function mostrarCarga() {
     if (!overlayCarga.hidden) {
       textoCarga.textContent = "Vayan poniendo la mesa";
     }
-  }, 5000);
+  }, 6000);
 
   setTimeout(() => {
     if (!overlayCarga.hidden) {
       textoCarga.textContent = "Ya se siente el olorcito";
     }
-  }, 10000);
+  }, 12000);
+
+    setTimeout(() => {
+    if (!overlayCarga.hidden) {
+      textoCarga.textContent = "¡Ya casi! Lo bueno se hace esperar";
+    }
+  }, 18000);
 }
 
 function ocultarCarga() {
@@ -755,15 +761,14 @@ function comprobarEspacioPDF(
   const altoPagina =
     doc.internal.pageSize.getHeight();
 
-  if (
-    y + espacioNecesario >
-    altoPagina - margenInferior
-  ) {
-    doc.addPage();
-    dibujarEncabezadoPDF(doc);
+if (
+  y + espacioNecesario >
+  altoPagina - margenInferior
+) {
+  doc.addPage();
 
-    return 50;
-  }
+  return 20;
+}
 
   return y;
 }
@@ -817,9 +822,9 @@ function generarPDF() {
     "F"
   );
 
-  dibujarEncabezadoPDF(doc);
+  // dibujarEncabezadoPDF(doc);
 
-  let y = 52;
+  let y = 20;
 
 
   // Pequeña introducción
@@ -865,9 +870,9 @@ function generarPDF() {
           "F"
         );
 
-        dibujarEncabezadoPDF(doc);
+        // dibujarEncabezadoPDF(doc);
 
-        y = 50;
+        y = 20;
       }
 
 
@@ -1162,7 +1167,7 @@ function generarPDF() {
           doc.text(
             String(numero),
             margen + 5,
-            y + 6.7,
+            y + 6,
             { align: "center" }
           );
 
